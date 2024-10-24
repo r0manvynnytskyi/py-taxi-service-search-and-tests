@@ -11,8 +11,7 @@ class ModelTests(TestCase):
             country="Japan",
         )
         self.assertEqual(
-            str(manufacturer),
-            f"{manufacturer.name} {manufacturer.country}"
+            str(manufacturer), f"{manufacturer.name} {manufacturer.country}"
         )
 
     def test_driver_str(self):
@@ -24,8 +23,7 @@ class ModelTests(TestCase):
             license_number="ABC12345",
         )
         self.assertEqual(
-            str(driver),
-            f"{driver.username} ({driver.first_name} {driver.last_name})"
+            str(driver), f"{driver.username} ({driver.first_name} {driver.last_name})"
         )
 
     def test_car_str(self):

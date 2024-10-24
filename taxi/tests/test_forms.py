@@ -27,31 +27,23 @@ class DriverCreationFormTest(TestCase):
 
 class DriverLicenseUpdateFormTests(TestCase):
     def test_driver_license_update_form_valid(self):
-        form_data = {
-            "license_number": "ABC12345"
-        }
+        form_data = {"license_number": "ABC12345"}
         form = DriverLicenseUpdateForm(data=form_data)
         self.assertTrue(form.is_valid())
 
     def test_driver_license_update_form_invalid_length(self):
-        form_data = {
-            "license_number": "1234567"
-        }
+        form_data = {"license_number": "1234567"}
         form = DriverLicenseUpdateForm(data=form_data)
         self.assertFalse(form.is_valid())
         self.assertIn("license_number", form.errors)
 
     def test_driver_license_update_form_invalid_format(self):
-        form_data = {
-            "license_number": "abc12345"
-        }
+        form_data = {"license_number": "abc12345"}
         form = DriverLicenseUpdateForm(data=form_data)
         self.assertFalse(form.is_valid())
         self.assertIn("license_number", form.errors)
 
-        form_data = {
-            "license_number": "ABC12A45"
-        }
+        form_data = {"license_number": "ABC12A45"}
         form = DriverLicenseUpdateForm(data=form_data)
         self.assertFalse(form.is_valid())
         self.assertIn("license_number", form.errors)
