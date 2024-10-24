@@ -34,7 +34,8 @@ class PrivateManufacturerTests(TestCase):
         )
         self.assertTemplateUsed(response, "taxi/manufacturer_list.html")
         self.assertEqual(
-            response.context["manufacturer_list"].count(), manufacturers.count()
+            response.context["manufacturer_list"].count(),
+            manufacturers.count()
         )
 
 

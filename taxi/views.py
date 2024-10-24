@@ -35,7 +35,9 @@ def index(request):
         "num_visits": num_visits + 1,
     }
 
-    return render(request, "taxi/index.html", context=context)
+    return render(request,
+                  "taxi/index.html",
+                  context=context)
 
 
 class ManufacturerListView(LoginRequiredMixin, generic.ListView):
@@ -86,7 +88,9 @@ class CarDetailView(LoginRequiredMixin, generic.DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(CarDetailView, self).get_context_data(**kwargs)
         username = self.request.GET.get("username")
-        context["search_form"] = DriverSearchForm(initial={"username": username})
+        context["search_form"] = DriverSearchForm(
+            initial={"username": username}
+        )
         return context
 
     def get_queryset(self):
@@ -149,5 +153,6 @@ def toggle_assign_to_car(request, pk):
     else:
         driver.cars.add(car)
 
-    return HttpResponseRedirect(reverse_lazy("taxi:car-detail", args=[pk]))
-
+    return HttpResponseRedirect(reverse_lazy(
+        "taxi:car-detail",
+        args=[pk]))
